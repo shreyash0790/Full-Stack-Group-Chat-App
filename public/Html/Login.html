@@ -37,15 +37,9 @@
                         <div class="iphone-mockup">
                             <div class="card shadow">
                                 <div class="card-body mx-auto">
-                                  <h4 class="card-title mt-3 text-center" style="font-weight: bold;">Sign Up</h4><br>
-                                  <h5 class="text-center">Get started with your free account!</h5>
+                                  <h4 class="card-title mt-3 text-center" style="font-weight: bold;">Login</h4><br>
+                                 
                                   <form  id="my-form" >
-                                    <div class="form-group input-group">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                                      </div>
-                                      <input id="name" class="form-control" placeholder="Full name" type="text">
-                                    </div>
                                     <div class="form-group input-group">
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
@@ -56,7 +50,7 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                                       </div>
-                                      <input id="pass" class="form-control" placeholder="Create password" type="password">
+                                      <input id="pass" class="form-control" placeholder=" Password" type="password">
                                     </div>
                                     <div class="form-check d-flex justify-content-center mb-2">
                                       <label class="form-check-label" for="userEx">
@@ -64,8 +58,16 @@
                                       </label>
                                   </div>
                                     <div class="form-group">
-                                      <button type="submit" class="btn btn-primary btn-block"  onclick="window.location.href='login.html'"> Create Account </button>
+                                      <button type="submit" class="btn btn-primary btn-block"> Login </button>
                                     </div>
+                                    <div class="d-flex justify-content-center text-center mt-2 pb-3">
+                                        <p class="mb-0"><a href="#"  style="color: rgb(0, 97, 253); font-weight: 500;" id="PassReset">Forgot Password?</a>
+                                        </p>
+                                      </div>
+                                    <div class="d-flex justify-content-center text-center mt-2 pb-3">
+                                        <p class="mb-0" style="color: rgb(9, 9, 9); font-weight: 400;">Don't have an account? <br><a href="SignUp.html"  style="color: blue; font-weight: 500;" id="SignUpButton">Sign Up</a>
+                                        </p>
+                                      </div>
                                   </form>
                                 </div>
                               </div>
@@ -79,7 +81,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script src="/Js/SignUp.js"></script>
+    <script src="/Js/Login.js"></script>
 </body>
 
 </html>
