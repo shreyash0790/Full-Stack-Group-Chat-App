@@ -1,122 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <title>Chats</title>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/public/Css/Chats.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatZing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"  crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700"  crossorigin="anonymous">
+    <link rel="stylesheet" href="/Css/SignUp.css">
+    <link rel="stylesheet" href="/Css/Chats.css">
+
 </head>
+
 <body>
-<div class="container">
-<div class="row clearfix">
-    <div class="col-lg-12">
-        <div class="card chat-app">
-            <div id="plist" class="people-list">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+    <div>
+        <div class="header-blue">
+            <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+                <div class="container"><a class="navbar-brand" href="#">ChatZing</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse"
+                        id="navcol-1">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item" role="presentation"><a class="nav-link active" href="SignUp.html">Home</a></li>
+                        
+                        </ul>
+                        <form class="form-inline mr-auto" target="_self">
+                            <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" name="search" id="search-field"></div>
+                        </form><span class="navbar-text"> <a href="Login.html" class="login">Log Out</a></span><a class="btn btn-light action-button" >User</a></div>
+                </div>
+            </nav>
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="col-lg-12">
+                        <div class="card chat-app">
+                            <div id="plist" class="people-list">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                </div>
+                                <ul class="list-unstyled chat-list mt-2 mb-0">
+                                    <li class="clearfix">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
+                                        <div class="about">
+                                            <div class="name">Vincent Porter</div>
+                                            <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>                                            
+                                        </div>
+                                    </li>
+                                    <li class="clearfix active">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                                        <div class="about">
+                                            <div class="name">Aiden Chavez</div>
+                                            <div class="status"> <i class="fa fa-circle online"></i> online </div>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar">
+                                        <div class="about">
+                                            <div class="name">Mike Thomas</div>
+                                            <div class="status"> <i class="fa fa-circle online"></i> online </div>
+                                        </div>
+                                    </li>                                    
+                                    <li class="clearfix">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                                        <div class="about">
+                                            <div class="name">Christian Kelly</div>
+                                            <div class="status"> <i class="fa fa-circle offline"></i> left 10 hours ago </div>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="avatar">
+                                        <div class="about">
+                                            <div class="name">Monica Ward</div>
+                                            <div class="status"> <i class="fa fa-circle online"></i> online </div>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar">
+                                        <div class="about">
+                                            <div class="name">Dean Henry</div>
+                                            <div class="status"> <i class="fa fa-circle offline"></i> offline since Oct 28 </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="chat">
+                                <div class="chat-header clearfix">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                                            </a>
+                                            <div class="chat-about">
+                                                <h6 class="m-b-0">Aiden Chavez</h6>
+                                                <small>Last seen: 2 hours ago</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 hidden-sm text-right">
+                                            <a href="javascript:void(0);" class="btn btn-outline-secondary"><i class="fa fa-camera"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-outline-primary"><i class="fa fa-image"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-cogs"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-outline-warning"><i class="fa fa-question"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat-history">
+                                    <ul class="m-b-0">
+                                        <li class="clearfix">
+                                            <div class="message-data text-right">
+                                                <span class="message-data-time">10:10 AM, Today</span>
+                                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                                            </div>
+                                            <div class="message other-message float-right"> Hi Aiden, how are you? How is the project coming along? </div>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="message-data">
+                                                <span class="message-data-time">10:12 AM, Today</span>
+                                            </div>
+                                            <div class="message my-message">Are we meeting today?</div>                                    
+                                        </li>                               
+                                        <li class="clearfix">
+                                            <div class="message-data">
+                                                <span class="message-data-time">10:15 AM, Today</span>
+                                            </div>
+                                            <div class="message my-message">Project has been already finished and I have results to show you.</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="chat-message clearfix">
+                                    <div class="input-group mb-0">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-send"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Enter text here...">                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <input type="text" class="form-control" placeholder="Search...">
                 </div>
-                <ul class="list-unstyled chat-list mt-2 mb-0">
-                    <li class="clearfix">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
-                        <div class="about">
-                            <div class="name">Vincent Porter</div>
-                            <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>                                            
-                        </div>
-                    </li>
-                    <li class="clearfix active">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
-                        <div class="about">
-                            <div class="name">Aiden Chavez</div>
-                            <div class="status"> <i class="fa fa-circle online"></i> online </div>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar">
-                        <div class="about">
-                            <div class="name">Mike Thomas</div>
-                            <div class="status"> <i class="fa fa-circle online"></i> online </div>
-                        </div>
-                    </li>                                    
-                    <li class="clearfix">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
-                        <div class="about">
-                            <div class="name">Christian Kelly</div>
-                            <div class="status"> <i class="fa fa-circle offline"></i> left 10 hours ago </div>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="avatar">
-                        <div class="about">
-                            <div class="name">Monica Ward</div>
-                            <div class="status"> <i class="fa fa-circle online"></i> online </div>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar">
-                        <div class="about">
-                            <div class="name">Dean Henry</div>
-                            <div class="status"> <i class="fa fa-circle offline"></i> offline since Oct 28 </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="chat">
-                <div class="chat-header clearfix">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
-                            </a>
-                            <div class="chat-about">
-                                <h6 class="m-b-0">Aiden Chavez</h6>
-                                <small>Last seen: 2 hours ago</small>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 hidden-sm text-right">
-                            <a href="javascript:void(0);" class="btn btn-outline-secondary"><i class="fa fa-camera"></i></a>
-                            <a href="javascript:void(0);" class="btn btn-outline-primary"><i class="fa fa-image"></i></a>
-                            <a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-cogs"></i></a>
-                            <a href="javascript:void(0);" class="btn btn-outline-warning"><i class="fa fa-question"></i></a>
-                        </div>
-                    </div>
                 </div>
-                <div class="chat-history">
-                    <ul class="m-b-0">
-                        <li class="clearfix">
-                            <div class="message-data text-right">
-                                <span class="message-data-time">10:10 AM, Today</span>
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
-                            </div>
-                            <div class="message other-message float-right"> Hi Aiden, how are you? How is the project coming along? </div>
-                        </li>
-                        <li class="clearfix">
-                            <div class="message-data">
-                                <span class="message-data-time">10:12 AM, Today</span>
-                            </div>
-                            <div class="message my-message">Are we meeting today?</div>                                    
-                        </li>                               
-                        <li class="clearfix">
-                            <div class="message-data">
-                                <span class="message-data-time">10:15 AM, Today</span>
-                            </div>
-                            <div class="message my-message">Project has been already finished and I have results to show you.</div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="chat-message clearfix">
-                    <div class="input-group mb-0">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-send"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Enter text here...">                                    
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-</div>
-</div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="/Js/Chats.js"></script>
 </body>
+
 </html>
