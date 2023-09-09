@@ -11,6 +11,11 @@ require('dotenv').config();
 //routes import
 const SignUpRoutes=require('./Routes/SignUp');
 const LoginRoutes=require('./Routes/Login')
+const ChatRoutes=require('./Routes/Chats')
+
+//models import
+const User=require('./Models/SignUp')
+const UserChats=require('./Models/Chats')
 
 
 //middlewares
@@ -28,8 +33,11 @@ app.use((req, res, next) => {
 //controllers middlewares
 app.use(SignUpRoutes);
 app.use(LoginRoutes);
+app.use(ChatRoutes);
 
-
+//model relations
+User.hasMany(UserChats);
+UserChats.belongsTo(User);
 
 //server config
 sequelize

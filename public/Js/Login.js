@@ -30,7 +30,7 @@ async function getFormData(formData) {
             alert('Login successfull')
           
             localStorage.setItem('token', responseData.token);
-            window.location.href = 'Home.html';
+            window.location.href = 'Chats.html';
             
         }
     } catch (err) {

@@ -254,3 +254,6 @@ body{
         overflow-x: auto
     }
 }
+#User-msg {
+    display: none;
+}
