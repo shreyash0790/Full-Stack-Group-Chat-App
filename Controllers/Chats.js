@@ -25,3 +25,20 @@ exports.UserMsg = async (req, res, next) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 }
+
+exports.GetUserMsg = async (req, res, next) => {
+    try {
+
+        const allMessages = await UserChat.findAll({
+            where: {UserId: req.users.Id },
+        });
+
+
+        res.status(200).json({ Messages:allMessages});
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+}

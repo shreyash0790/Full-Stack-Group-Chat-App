@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+
 
 
 const SendBtn = document.getElementById('Send-btn');
@@ -67,4 +67,30 @@ async function createListItem(UserMsg) {
     }
 
 }
+document.addEventListener('DOMContentLoaded', function () {
+
+GetUserTextData();
+
 })
+
+async function GetUserTextData() {
+    try {
+        const token = localStorage.getItem('token');
+
+        const response = await axios.get('http://localhost:4000/GetUserMsg', {
+            headers: {
+                "Authorization": token
+            }
+        });
+
+        const allUserMsg = response.data.Messages;
+        console.log(allUserMsg);
+
+        for (const UserMsgs of allUserMsg) {
+            createListItem(UserMsgs);
+          }
+
+    } catch (err) {
+        console.log(err);
+    }
+}
