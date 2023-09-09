@@ -31,6 +31,7 @@ exports.GetUserMsg = async (req, res, next) => {
 
         const allMessages = await UserChat.findAll({
             where: {UserId: req.users.Id },
+            order: [['CreatedAt', 'ASC']]
         });
 
 

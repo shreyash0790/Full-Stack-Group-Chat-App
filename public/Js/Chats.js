@@ -69,7 +69,8 @@ async function createListItem(UserMsg) {
 }
 document.addEventListener('DOMContentLoaded', function () {
 
-GetUserTextData();
+
+    setInterval( GetUserTextData,1000)
 
 })
 
@@ -84,7 +85,10 @@ async function GetUserTextData() {
         });
 
         const allUserMsg = response.data.Messages;
-        console.log(allUserMsg);
+       
+        
+
+        clearMessageList();
 
         for (const UserMsgs of allUserMsg) {
             createListItem(UserMsgs);
@@ -93,4 +97,7 @@ async function GetUserTextData() {
     } catch (err) {
         console.log(err);
     }
+}
+ function clearMessageList() {
+   Msglist.innerHTML = ''; // Clear the content of the container
 }
