@@ -70,13 +70,22 @@ async function createListItem(UserMsg) {
 document.addEventListener('DOMContentLoaded', function () {
 
 
-    setInterval( GetUserTextData,1000)
-
+    //  setInterval(GetUserTextData,1000);      apply this in production
+    GetUserTextData();
 })
+const MsgLimit = 50; 
 
 async function GetUserTextData() {
     try {
         const token = localStorage.getItem('token');
+        let allUserMsg = [];
+
+        // Check if messages are cached in localStorage
+        const LocalMessages = localStorage.getItem('cachedMessages');
+        if (LocalMessages) {
+            allUserMsg = JSON.parse(LocalMessages);
+            
+        }
 
         const response = await axios.get('http://localhost:4000/GetUserMsg', {
             headers: {
@@ -84,20 +93,35 @@ async function GetUserTextData() {
             }
         });
 
-        const allUserMsg = response.data.Messages;
-       
+        const newMessages = response.data.Messages;
+      
+
+         // Filter out messages with duplicate UUIDs and add unique messages to allUserMsg
+         newMessages.forEach((newMessage) => {
+            if (!allUserMsg.some((existingMessage) => existingMessage.Id === newMessage.Id)) {
+                allUserMsg.push(newMessage);
+            }
+        });
+
+        if (allUserMsg.length > MsgLimit) {
+            const messagesToRemoveIndex = allUserMsg.length - MsgLimit;
+            allUserMsg.splice(0, messagesToRemoveIndex);
+        }
+
         
-
-        clearMessageList();
-
+        localStorage.setItem('cachedMessages', JSON.stringify(allUserMsg));
+        clearMessageList()
+ console.log(allUserMsg);
+      
         for (const UserMsgs of allUserMsg) {
             createListItem(UserMsgs);
-          }
+        }
 
     } catch (err) {
         console.log(err);
     }
 }
+
  function clearMessageList() {
    Msglist.innerHTML = ''; // Clear the content of the container
 }
