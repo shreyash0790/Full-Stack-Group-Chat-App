@@ -12,10 +12,13 @@ require('dotenv').config();
 const SignUpRoutes=require('./Routes/SignUp');
 const LoginRoutes=require('./Routes/Login')
 const ChatRoutes=require('./Routes/Chats')
+const GroupsRoutes=require('./Routes/Groups');
 
 //models import
 const User=require('./Models/SignUp')
 const UserChats=require('./Models/Chats')
+const Groups=require('./Models/Groups')
+const GroupMember=require('./Models/GroupMembers');
 
 
 //middlewares
@@ -34,10 +37,24 @@ app.use((req, res, next) => {
 app.use(SignUpRoutes);
 app.use(LoginRoutes);
 app.use(ChatRoutes);
+app.use(GroupsRoutes);
 
 //model relations
 User.hasMany(UserChats);
 UserChats.belongsTo(User);
+
+User.hasMany(Groups);
+Groups.belongsTo(User);
+
+User.hasMany(GroupMember);
+GroupMember.belongsTo(User);
+
+Groups.hasMany(GroupMember)
+GroupMember.belongsTo(Groups)
+
+GroupMember.hasMany(UserChats);
+UserChats.belongsTo(GroupMember);
+
 
 //server config
 sequelize

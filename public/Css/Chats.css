@@ -11,6 +11,8 @@ body{
     position: relative;
     width: 100%;
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+    height: 100%; 
+    flex-grow: 1;
 }
 .chat-app .people-list {
     width: 280px;
@@ -18,7 +20,11 @@ body{
     left: 0;
     top: 0;
     padding: 20px;
-    z-index: 7
+    z-index: 7;
+   
+    height: 100%; 
+
+    flex-grow: 1;
 }
 
 .chat-app .chat {
@@ -30,46 +36,64 @@ body{
     -moz-transition: .5s;
     -o-transition: .5s;
     -webkit-transition: .5s;
-    transition: .5s
+    transition: .5s;
+    overflow-y: auto;
+    max-height: 500px;
 }
 
 .people-list .chat-list li {
     padding: 10px 15px;
     list-style: none;
-    border-radius: 3px
+    border-radius: 3px;
+    overflow-y: auto;
+    max-height: 500px;
 }
 
 .people-list .chat-list li:hover {
     background: #efefef;
-    cursor: pointer
+    cursor: pointer;
+    overflow-y: auto;
+    max-height: 500px;
 }
 
 .people-list .chat-list li.active {
-    background: #efefef
+    background: #efefef;
+    overflow-y: auto;
+    max-height: 500px;
 }
 
 .people-list .chat-list li .name {
-    font-size: 15px
+    font-size: 15px;
+    overflow-y: auto;
+    max-height: 500px;
 }
 
 .people-list .chat-list img {
     width: 45px;
-    border-radius: 50%
+    border-radius: 50%;
+    overflow-y: auto;
+    max-height: 500px;
 }
 
 .people-list img {
     float: left;
-    border-radius: 50%
+    border-radius: 50%;
+    overflow-y: auto;
+    max-height: 500px;
 }
 
 .people-list .about {
     float: left;
-    padding-left: 8px
+    padding-left: 8px;
+    overflow-y: auto;
+    max-height: 500px;
 }
 
 .people-list .status {
     color: #999;
-    font-size: 13px
+    font-size: 13px;
+    overflow-y: auto;
+    max-height: 500px;
 }
 
 .chat .chat-header {
@@ -94,12 +118,14 @@ body{
 }
 
 .chat .chat-history ul {
-    padding: 0
+    padding: 0;
+    margin: 0
 }
 
 .chat .chat-history ul li {
     list-style: none;
-    margin-bottom: 30px
+    margin-bottom: 30px;
+    clear: both;
 }
 
 .chat .chat-history ul li:last-child {
@@ -214,6 +240,7 @@ body{
         height: 465px;
         width: 100%;
         overflow-x: auto;
+        overflow-y: auto;
         background: #fff;
         left: -400px;
         display: none
@@ -229,31 +256,105 @@ body{
     }
     .chat-app .chat-history {
         height: 300px;
-        overflow-x: auto
+        overflow-x: auto;
+        overflow-y: auto;
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
     .chat-app .chat-list {
         height: 650px;
-        overflow-x: auto
+        overflow-x: auto;
+        overflow-y: auto;
     }
     .chat-app .chat-history {
         height: 600px;
-        overflow-x: auto
+        overflow-x: auto;
+        overflow-y: auto;
     }
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
     .chat-app .chat-list {
         height: 480px;
-        overflow-x: auto
+        overflow-x: auto;
+        overflow-y: auto;
     }
     .chat-app .chat-history {
         height: calc(100vh - 350px);
-        overflow-x: auto
+        overflow-x: auto;
+        overflow-y: auto;
     }
 }
 #User-msg {
     display: none;
 }
+
+  
+ /* creattionn of create group form  */
+ .form-popup {
+    display: none; /* Use flexbox to center the content */
+    flex-direction: column; /* Stack form elements vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    position: fixed;
+    top: 50%; /* Position from the top */
+    left: 50%; /* Position from the left */
+    transform: translate(-50%, -50%); /* Center it precisely */
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  .form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  .form-container input[type=text] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+ 
+  .form-container input[type=text]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  .form-container .btnn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:6px;
+    opacity: 0.8;
+  }
+  
+  .form-container .cancel {
+    background-color: red;
+  }
+  .center-text {
+    text-align: center;
+  }
+  .left-align-label {
+    text-align: left;
+  }
+  .form-container .btnadd {
+    background-color: #04AA6D;
+    color: white;
+    padding: 5px 8px;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    margin-bottom:6px;
+    opacity: 0.8;
+    margin-top:6px ;
+  
+
+  }
+ 

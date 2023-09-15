@@ -23,9 +23,7 @@
     <div>
         <div class="header-blue">
             <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
-                <div class="container"><a class="navbar-brand" href="#">ChatZing</a><button class="navbar-toggler"
-                        data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle
-                            navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="container"><a class="navbar-brand" href="#">ChatZing</a>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav">
                             <li class="nav-item" role="presentation"><a class="nav-link active"
@@ -36,8 +34,8 @@
                             <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input
                                     class="form-control search-field" type="search" name="search" id="search-field">
                             </div>
-                        </form><span class="navbar-text"> <a href="Login.html" class="login">Log Out</a></span><a
-                            class="btn btn-light action-button">User</a>
+                        </form><span class="navbar-text"> <a href="Login.html" class="login" id="LogOut">Log Out</a></span><a
+                            class="btn btn-light action-button" id="DisplayUsername"></a>
                     </div>
                 </div>
             </nav>
@@ -52,14 +50,13 @@
                                     </div>
                                     <input type="text" class="form-control" placeholder="Search...">
                                 </div>
-                                <ul class="list-unstyled chat-list mt-2 mb-0">
+                                <ul class="list-unstyled chat-list mt-2 mb-0" id="groupList" >
 
-                                    <li class="clearfix">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                                    <li class="clearfix" id="group-item">
+                                        <img>
                                         <div class="about">
-                                            <div class="name">Aiden Chavez</div>
-                                            <div class="status"> <i class="fa fa-circle offline">Last seen: 2 hours
-                                                    ago</i> </div>
+                                            <div class="name"> <h4 class="m-b-3" style="margin-top: 10px"  ></h4></div>
+                                        
                                         </div>
                                     </li>
 
@@ -70,23 +67,55 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                                <img src="https://plus.unsplash.com/premium_photo-1681487872232-fa622a6dd59e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80"
                                                     alt="avatar">
                                             </a>
-                                            <div class="chat-about">
-                                                <h6 class="m-b-0">Aiden Chavez</h6>
-                                                <small>Last seen: 2 hours ago</small>
+                                            <div class="chat-about" >
+                                                <h4 class="m-b-3" style="margin-top: 7px" id="group-name-display"></h4>
+                                        
                                             </div>
                                         </div>
                                         <div class="col-lg-6 hidden-sm text-right">
-                                            <a href="javascript:void(0);" class="btn btn-outline-secondary"><i
-                                                    class="fa fa-camera"></i></a>
+                                        
                                             <a href="javascript:void(0);" class="btn btn-outline-primary"><i
-                                                    class="fa fa-image"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-outline-info"><i
-                                                    class="fa fa-cogs"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-outline-warning"><i
-                                                    class="fa fa-question"></i></a>
+                                                    class="fa fa-image"></i>Add Images</a>
+                                            <button type="button" class="btn btn-outline-info" id="Invite-btn" >
+                                                    Invite People</button>
+                                                    <div class="form-popup" id="CreateInv-Form">
+                                                        <form  class="form-container">
+                                                          <h4 class="center-text" id="InviteGroup"> </h4>
+                                                      
+                                                          <h6 class="left-align-label"><b>Users </b> </h6>
+                                                         
+                                                          <ul class="list-group" id="InviteList" >
+
+                                                            <li class="list-group-item" style="display: flex; align-items: center; padding-top: 1px; padding-bottom: 1px; justify-content: space-between;" id="Invite-item" >
+                                                        <button class="btnadd btnadd-outline-info " id="Add-btn"></button>
+                                                            </li>
+                        
+                                                        </ul>
+                                                         
+                                                    
+                                                         
+                                                          <button type="button" class="btn cancel" onclick="closeInviteForm()">Confirm Invite</button>
+                                                        </form>
+                                                      </div>
+
+                                            <a href="javascript:void(0);" class="btn btn-outline-warning" onclick="openGroupForm()">
+                                                  Create Group</a>
+
+                                                    <div class="form-popup" id="CreateG-Form">
+                                                        <form  class="form-container">
+                                                          <h4 class="center-text">Create Your Own Chat Group </h4>
+                                                      
+                                                          <h6 class="left-align-label"><b>Group Name</b> </h6>
+                                                          <input type="text" id="Group-name" placeholder="Enter Group Name "  required>
+                                                      
+                                                    
+                                                         
+                                                          <button type="button" class="btn cancel" onclick="closeGroupForm()">Create Group</button>
+                                                        </form>
+                                                      </div>
                                         </div>
                                     </div>
                                 </div>
@@ -100,7 +129,7 @@
                                 <div class="chat-message clearfix">
                                     <div class="input-group mb-0">
                                         <div class="input-group-prepend">
-                                            <!-- <span class="input-group-text"><i class="fa fa-send"></i></span> -->
+                                           
                                             <button class="input-group-text" type="submit" id="Send-btn">Send</button>
                                         </div>
                                         <input type="text" class="form-control" placeholder="Enter text here..."
@@ -119,6 +148,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="/Js/Chats.js"></script>
+    <script src="/Js/GroupsInvite.js"></script>
 </body>
 
 </html>

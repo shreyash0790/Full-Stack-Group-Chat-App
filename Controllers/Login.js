@@ -12,6 +12,7 @@ exports.GetUser = async (req, res, next) => {
     try {
         const Email = req.query.Email;
         const Password=req.query.Password;
+    
 
         console.log('Received Email:', Email);
         console.log('Received Password:', Password);
@@ -33,6 +34,8 @@ exports.GetUser = async (req, res, next) => {
         }
     } catch (err) {
         res.status(500).json({ error: 'Internal Server Error' });
+        console.log(err);
     }
 };
+
 

@@ -23,7 +23,7 @@ async function getFormData(formData) {
     try {
         const response = await axios.get('http://localhost:4000/GetUser', { params: formData });
         const responseData = response.data;
-        console.log(response.data)
+        console.log(response.data.User.Name)
 
         if (response.status === 200) {
             clearErrorMessages();
