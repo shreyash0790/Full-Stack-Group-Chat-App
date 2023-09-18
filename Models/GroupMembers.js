@@ -7,5 +7,9 @@ const GroupMember=sequelize.define('GroupMember',{
         primaryKey: true,
         allowNull:false
      },
+     Admin:{
+      type:Sequelize.BOOLEAN,
+      default:false,
+     }
    })
    module.exports=GroupMember;

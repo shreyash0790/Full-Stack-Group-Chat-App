@@ -23,14 +23,17 @@ async function getFormData(formData) {
     try {
         const response = await axios.get('http://localhost:4000/GetUser', { params: formData });
         const responseData = response.data;
-        console.log(response.data.User.Name)
+       
+
 
         if (response.status === 200) {
             clearErrorMessages();
             alert('Login successfull')
           
             localStorage.setItem('token', responseData.token);
-            window.location.href = 'Chats.html';
+            window.location.href = `/Html/Chats.html?username=${responseData.User.Name}`;
+       
+         
             
         }
     } catch (err) {
@@ -78,4 +81,3 @@ document.addEventListener("DOMContentLoaded", function() {
 
    
 });
- 

@@ -15,10 +15,11 @@ exports.CreateGroup=async (req, res, next) => {
      if(user){
         const Group= await Groups.create({ Id:id, GroupName: Groupname, UserId: req.users.Id })
             if(Group){
-         await GroupMember.create({Id:ID, UserId: req.users.Id, GroupId:Group.Id })
+
+         await GroupMember.create({Id:ID, UserId: req.users.Id, GroupId:Group.Id,Admin:true })
             }
          }
-         res.status(201).json({ Group: Groups });
+         res.status(201).json({ Group: Groupname });
 
 
 
@@ -70,7 +71,7 @@ exports.GroupConfirmInvite=async (req, res, next) => {
        
 for(user of UserId){
     const id=uuid.v4();
-        const Members=await GroupMember.create({Id:id, UserId:user , GroupId:groupId,})
+        const Members=await GroupMember.create({Id:id, UserId:user , GroupId:groupId,Admin:false})
         members.push(Members);
 }
 res.status(200).json({Members:members});

@@ -79,6 +79,30 @@
                                         
                                             <a href="javascript:void(0);" class="btn btn-outline-primary"><i
                                                     class="fa fa-image"></i>Add Images</a>
+                                                    <button type="button" class="btn btn-outline-info" id="GroupMem-btn" >
+                                                       Group Members</button>
+                                                       <div class="form-popup" id="GroupMembers-Form">
+                                                        <form  class="form-container">
+                                                          <h4 class="center-text" id="Group"> </h4>
+                                                      
+                                                          <h6 class="left-align-label"><b>Members  </b> </h6>
+                                                         
+                                                          <ul class="list-group" id="G-List" >
+
+                                                            <li class="list-group-item" style="display: flex; align-items: center; padding-top: 1px; padding-bottom: 1px; justify-content: space-between;" id="Invite-item" >
+                                                        <button class="btnadd btnadd-outline-info " id="Remove-btn"></button><br><br>
+                                                        <button class="btnadd btnadd-outline-info " id="Admin-btn"></button>
+                                                            </li>
+                        
+                                                        </ul>
+                                                         
+                                                    
+                                                         
+                                                          <button type="button" class="btn cancel" onclick="closeGroupMemForm()">Confirm Delete</button>
+                                                          <button type="button" class="btn cancel" onclick="closeGroupMemAdminForm()">Confirm Admin</button>
+                                                        </form>
+                                                      </div>
+
                                             <button type="button" class="btn btn-outline-info" id="Invite-btn" >
                                                     Invite People</button>
                                                     <div class="form-popup" id="CreateInv-Form">
@@ -149,6 +173,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="/Js/Chats.js"></script>
     <script src="/Js/GroupsInvite.js"></script>
+    <script src="/Js/GroupAdmin.js"></script>
+    <script src="/js/Login.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 
 let addedUserIds = [];
+
 document.getElementById('Invite-btn').addEventListener("click",async function(){
 try {
   const token = localStorage.getItem('token');
@@ -20,7 +21,7 @@ try {
 
       
 for(User of allUsers){
-  console.log(User)
+
   const Userlists=document.getElementById('InviteList')
    const Userlistitems=document.createElement('li')
  Userlistitems.className='list-group-item'
@@ -39,12 +40,12 @@ for(User of allUsers){
             event.preventDefault();
             addBtn.textContent = "Added";
             addedUserIds.push(userId);
-            console.log(addedUserIds)
+          
         });
     };
 
     captureUserId();
-    console.log(addedUserIds);
+  
 
 
   Userlistitems.appendChild(addBtn);
@@ -73,7 +74,7 @@ async function closeInviteForm() {
           "Authorization": token
       }
   });
-console.log(response.data);
+
 
   }catch(err){
     console.log(err)

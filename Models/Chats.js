@@ -9,7 +9,7 @@ const UsersMsg=sequelize.define('UsersMsg',{
      },
    Messages:{
      type: Sequelize.STRING,
-     allowNull:false
+     allowNull:false,
     }
    })
    module.exports=UsersMsg;
