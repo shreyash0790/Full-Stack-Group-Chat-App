@@ -4,7 +4,7 @@ const UserChat = require('../Models/Chats');
 const GroupMember=require('../Models/GroupMembers');
 const io=require('../Util/Websocket');
 
-io.on('connection', (socket)=>{
+
 
 exports.UserMsg = async (req, res, next) => {
     try {
