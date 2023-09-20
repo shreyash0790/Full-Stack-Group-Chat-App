@@ -303,11 +303,15 @@ body{
     transform: translate(-50%, -50%); /* Center it precisely */
     border: 3px solid #f1f1f1;
     z-index: 9;
+    width: auto; /* Allow the div to adjust its width based on content */
+    height: auto;
   }
   .form-container {
-    max-width: 300px;
+    max-width: 500px;
     padding: 10px;
     background-color: white;
+   
+   
   }
   
   .form-container input[type=text] {
@@ -347,13 +351,16 @@ body{
   .form-container .btnadd {
     background-color: #04AA6D;
     color: white;
-    padding: 5px 8px;
+    padding: 4px 8px;
     border: none;
     cursor: pointer;
-    width: 50%;
-    margin-bottom:6px;
+    width: auto; /* Allow the width to adjust based on content */
+    height: auto;
+    margin-bottom:1px;
     opacity: 0.8;
-    margin-top:6px ;
+    margin-top:1px ;
+    margin-left: 25px;
+  
   
 
   }

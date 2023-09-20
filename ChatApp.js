@@ -3,6 +3,7 @@ const fs=require('fs')
 const express = require('express')
 const cors=require('cors')
 const sequelize=require('./Util/Database');
+const websocket=require('./Util/Websocket');
 const app = express();
 require('dotenv').config();
 
@@ -11,8 +12,28 @@ require('dotenv').config();
 //routes import
 const SignUpRoutes=require('./Routes/SignUp');
 const LoginRoutes=require('./Routes/Login')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const ChatRoutes=require('./Routes/Chats')
 const GroupsRoutes=require('./Routes/Groups');
+const GroupAdminRoutes=require('./Routes/GroupAdmin');
 
 //models import
 const User=require('./Models/SignUp')
@@ -36,8 +57,11 @@ app.use((req, res, next) => {
 //controllers middlewares
 app.use(SignUpRoutes);
 app.use(LoginRoutes);
+app.use(GroupAdminRoutes);
 app.use(ChatRoutes);
 app.use(GroupsRoutes);
+app.use(websocket);
+
 
 //model relations
 User.hasMany(UserChats);
