@@ -5,7 +5,7 @@ const SendBtn = document.getElementById('Send-btn');
 const UserTextInput = document.getElementById('Text-input');
 const Msglist = document.getElementById('User-msg-list');
 const UserMsgDiv = document.getElementById('User-msg');
-
+const socket=io('http://localhost:3000');
 SendBtn.addEventListener('click', onSubmit);
 
 
@@ -19,11 +19,34 @@ function onSubmit(e) {
         alert("No Messeges Input");
     } else {
         const UserTextData = { Messages: Messages };
+        socket.emit("User-Msg",Messages);
        postUserTextData(UserTextData)
-        clearFields();
+       UserTextInput.value="";
+  
+
+      
     }
 }
 
+socket.on("messages",(message)=>{
+    const newListItem = document.createElement('li');
+    newListItem.className = 'clearfix'
+    const newMessage = document.createElement('div');
+
+    const queryParamsUsername = new URLSearchParams(window.location.search);
+    const username = queryParamsUsername.get("username");
+
+    newMessage.textContent = ` ${message}`;
+
+
+    newMessage.className = "message my-message"
+    newMessage.id = 'User-msg';
+    newMessage.style.display = 'inline-block'
+
+    newListItem.appendChild(newMessage);
+    Msglist.appendChild(newListItem);
+
+})
 async function postUserTextData(UserTextData) {
     try {
         const token = localStorage.getItem('token');
@@ -35,13 +58,7 @@ async function postUserTextData(UserTextData) {
             }
         });
 
-        const UserMsg = response.data;
-        if (groupId) {
-            createListItem(UserMsg);
-        }
-        else {
-            alert('Select Group to send Messages')
-        }
+
     } catch (err) {
         console.log(err);
     }
@@ -54,7 +71,7 @@ async function createListItem(UserMsg) {
         newListItem.className = 'clearfix'
         const newMessage = document.createElement('div');
 
-        newMessage.textContent = `${UserMsg.UserName}:   ${UserMsg.MessageContent}`;
+        newMessage.textContent = ` ${UserMsg.MessageContent}`;
 
 
         newMessage.className = "message my-message"
@@ -89,8 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
         DisplayUser.disabled = true;
     }
 
-
     GetUserTextData()
+
     getGroupsData();
     adminVerify();
 
@@ -307,8 +324,6 @@ async function getGroupsData() {
                 const url = `http://localhost:4000/Html/Chats.html?groupId=${groupId}&groupName=${names}`;
 
                 window.location.href = url;
-
-
 
 
             });

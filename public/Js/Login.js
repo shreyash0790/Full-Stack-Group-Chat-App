@@ -1,4 +1,4 @@
-const myForm = document.querySelector('#my-form');
+const myForm = document.getElementById('my-form')
 const EmailInput = document.querySelector('#email');
 const PasswordInput = document.querySelector('#pass');
 const userEx = document.querySelector('#userEx');
@@ -31,7 +31,7 @@ async function getFormData(formData) {
             alert('Login successfull')
           
             localStorage.setItem('token', responseData.token);
-            window.location.href = 'Chats.html';
+            window.location.href = `/Html/Chats.html?username=${responseData.User.Name}`;
        
          
             
@@ -78,6 +78,8 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = 'PasswordReset.html';
     });
     
+
+
 
    
 });

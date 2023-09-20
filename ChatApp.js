@@ -3,9 +3,20 @@ const fs=require('fs')
 const express = require('express')
 const cors=require('cors')
 const sequelize=require('./Util/Database');
-const app = express();
-require('dotenv').config();
+const app=express();
 
+const io=require('socket.io')(3000,{
+  cors:{
+    origin:['http://localhost:4000']
+  }
+})
+
+
+io.on("connection", (socket)=>{
+  socket.on("User-Msg",message=>{
+    io.emit("messages",message)
+  })
+})
 
 
 //routes import
