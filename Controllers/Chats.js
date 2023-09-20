@@ -2,11 +2,8 @@ const uuid = require('uuid');
 const Users = require('../Models/SignUp');
 const UserChat = require('../Models/Chats');
 const GroupMember=require('../Models/GroupMembers');
-const io=require('../Util/Websocket');
 
-io.on('connection', (socket)=>{
 
-socket.on("postmessage",
 exports.UserMsg = async (req, res, next) => {
     try {
         const Messages = req.body.Messages;
@@ -32,8 +29,7 @@ exports.UserMsg = async (req, res, next) => {
 }
 
 
-)
-socket.emit("getmessage",
+
 
 exports.GetUserMsg = async (req, res, next) => {
     try {
@@ -75,12 +71,7 @@ exports.GetUserMsg = async (req, res, next) => {
 
 }
 
-)
 
-
-
-
-})
 
 
 

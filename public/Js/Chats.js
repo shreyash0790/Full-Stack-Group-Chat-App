@@ -5,7 +5,6 @@ const SendBtn = document.getElementById('Send-btn');
 const UserTextInput = document.getElementById('Text-input');
 const Msglist = document.getElementById('User-msg-list');
 const UserMsgDiv = document.getElementById('User-msg');
-const socket=io();
 
 SendBtn.addEventListener('click', onSubmit);
 
@@ -20,7 +19,7 @@ function onSubmit(e) {
         alert("No Messeges Input");
     } else {
         const UserTextData = { Messages: Messages };
-        socket.emit("postMessage",  postUserTextData(UserTextData))
+       postUserTextData(UserTextData)
         clearFields();
     }
 }
@@ -91,12 +90,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-   socket.on("getMessage",   GetUserTextData())
+    GetUserTextData()
     getGroupsData();
     adminVerify();
 
 
 })
+
 
 // <...   getting chat data.....//
 const MsgLimit = 50;
