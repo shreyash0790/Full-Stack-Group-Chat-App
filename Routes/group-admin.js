@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const GAdmincontroller=require('../Controllers/GroupAdmin');
-const UserAuthen=require('../Middlewares/Autherizations');
+const GAdmincontroller=require('../controllers/GroupAdmin');
+const UserAuthen=require('../middlewares/autherizations');
 
 
 router.get('/GroupMember/Admin/verify/:groupId', UserAuthen.Authentication,GAdmincontroller.VerifyAdmin);

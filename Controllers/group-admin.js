@@ -1,6 +1,6 @@
 
-const GroupMember=require('../Models/GroupMembers');
-const Users = require('../Models/SignUp');
+const GroupMember=require('../models/group-members');
+const Users = require('../models/sign-up');
 
 
 
@@ -10,12 +10,12 @@ const Users = require('../Models/SignUp');
 exports.removeGroupMembers=async (req, res, next) => {
     try {
         const groupId=req.params.groupId
-        const removeUserId=req.body.removeUserId
+        const removeUserIds=req.body.removeUserId
        
 
 
 
-for( const user of removeUserId){
+for( const user of removeUserIds){
        await GroupMember.destroy({ where: {GroupId:groupId,UserId:user}})
 }
 res.status(200).json({Stat:"Removed"});

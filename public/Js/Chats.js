@@ -1,42 +1,55 @@
 
-
-
-const SendBtn = document.getElementById('Send-btn');
+const myform = document.getElementById('myForm');
 const UserTextInput = document.getElementById('Text-input');
 const Msglist = document.getElementById('User-msg-list');
+const selectedimgFile=document.getElementById('Imagefile');
 const UserMsgDiv = document.getElementById('User-msg');
-const socket=io('http://localhost:3000');
-SendBtn.addEventListener('click', onSubmit);
+const socket = io('http://localhost:3000');
+
+const CurrUsername = document.getElementById('DisplayUsername');
 
 
-// <.... chats   data >.....//
 
-function onSubmit(e) {
+myform.addEventListener('submit', async function (e) {
     e.preventDefault();
     const Messages = UserTextInput.value;
-
+    const ActiveUser = CurrUsername.textContent;
     if (UserTextInput.value === '') {
         alert("No Messeges Input");
-    } else {
+    } else{
+        socket.emit("User-Msg", { Messages, ActiveUser });
         const UserTextData = { Messages: Messages };
-        socket.emit("User-Msg",Messages);
-       postUserTextData(UserTextData)
-       UserTextInput.value="";
-  
-
+        postUserTextData(UserTextData)
+        UserTextInput.value = "";
+        
+        const formdata = new FormData();
+        const selectedFile=selectedimgFile.files[0];
       
+        formdata.append("Imagefile", selectedFile)
+        formdata.append("Text-input", Messages)
+      
+        const queryParams = new URLSearchParams(window.location.search);
+        const groupId = queryParams.get("groupId");
+
+        const token = localStorage.getItem('token');
+        const response = await axios.post(`http://localhost:4000/UserMsg/groupChat/Images/:${groupId}`, formdata, {headers:{'Content-Type': 'multipart/form-data', "Authorization": token}});
+
     }
 }
 
-socket.on("messages",(message)=>{
+);
+
+
+
+
+socket.on("messages", (data) => {
     const newListItem = document.createElement('li');
     newListItem.className = 'clearfix'
     const newMessage = document.createElement('div');
 
-    const queryParamsUsername = new URLSearchParams(window.location.search);
-    const username = queryParamsUsername.get("username");
+    const { Messages, ActiveUser } = data;
 
-    newMessage.textContent = ` ${message}`;
+    newMessage.textContent = ` ${ActiveUser}: ${Messages}`;
 
 
     newMessage.className = "message my-message"
@@ -71,7 +84,7 @@ async function createListItem(UserMsg) {
         newListItem.className = 'clearfix'
         const newMessage = document.createElement('div');
 
-        newMessage.textContent = ` ${UserMsg.MessageContent}`;
+        newMessage.textContent = ` ${UserMsg.UserName}: ${UserMsg.MessageContent}`;
 
 
         newMessage.className = "message my-message"
@@ -110,6 +123,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     getGroupsData();
     adminVerify();
+
+
+
 
 
 })
@@ -159,7 +175,7 @@ async function GetUserTextData() {
             }
 
             localStorage.setItem('cachedMessages', JSON.stringify(allUserMsg));
-          
+
 
             clearMessageList();
 
@@ -282,7 +298,7 @@ async function getGroupsData() {
                 "Authorization": token
             }
         });
-     
+
         const newGroup = response.data.GroupNames;
 
 
@@ -321,7 +337,7 @@ async function getGroupsData() {
             listItem.addEventListener("click", function (e) {
                 e.preventDefault();
 
-                const url = `http://localhost:4000/Html/Chats.html?groupId=${groupId}&groupName=${names}`;
+                const url = `http://localhost:4000/html/chats.html?groupId=${groupId}&groupName=${names}`;
 
                 window.location.href = url;
 
@@ -347,8 +363,8 @@ async function adminVerify() {
     try {
         const Invitebtn = document.getElementById('Invite-btn')
         const GroupmemInfo = document.getElementById('GroupMem-btn')
-        const removebtn=document.getElementById('Remove-btn')
-        const adminbtn=document.getElementById('Admin-btn')
+        const removebtn = document.getElementById('Remove-btn')
+        const adminbtn = document.getElementById('Admin-btn')
         const queryParams = new URLSearchParams(window.location.search);
         const groupId = queryParams.get("groupId");
         const token = localStorage.getItem('token');
@@ -358,18 +374,18 @@ async function adminVerify() {
             }
         });
         const Admindata = response.data.Admin
-        
 
-        for(admin of Admindata){
+
+        for (admin of Admindata) {
             if (admin.Admin) {
                 Invitebtn.style.display = "inline";
-                removebtn.disabled=true
+                removebtn.disabled = true
 
             }
             else {
                 Invitebtn.style.display = "none";
-                removebtn.style.display="none";
-                adminbtn.style.display="none";
+                removebtn.style.display = "none";
+                adminbtn.style.display = "none";
             }
         }
     } catch (err) {
@@ -377,4 +393,6 @@ async function adminVerify() {
     }
 
 }
+
+
 

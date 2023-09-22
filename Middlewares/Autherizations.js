@@ -1,5 +1,5 @@
 const jwt=require('jsonwebtoken');
-const Users=require('../Models/SignUp');
+const Users=require('../models/sign-up');
 require('dotenv').config(); // Load the .env fil
 
 

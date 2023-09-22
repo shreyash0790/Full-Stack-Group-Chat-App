@@ -1,8 +1,8 @@
 {
   "name": "full-stack-group-chat-app",
   "version": "1.0.0",
-  "description": "Chat App",
-  "main": "ChatApp.js",
+  "description": "chat-app",
+  "main": "chat-app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ChatApp.js"
@@ -13,17 +13,21 @@
     "nodemon": "^3.0.1"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.417.0",
+    "@aws-sdk/s3-request-presigner": "^3.417.0",
     "@getbrevo/brevo": "^1.0.1",
-    "aws-sdk": "^2.1440.0",
+    "aws-sdk": "^2.1462.0",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.1",
+    "multer": "^1.4.5-lts.1",
     "mysql2": "^3.5.2",
     "razorpay": "^2.9.1",
     "sequelize": "^6.32.1",
     "sequelize-cli": "^6.6.1",
+    "sharp": "^0.32.6",
     "socket.io": "^4.7.2",
     "socket.io-client": "^4.7.2",
     "uuid": "^9.0.0"

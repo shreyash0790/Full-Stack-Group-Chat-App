@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Signcontroller=require('../Controllers/SignUp');
+const Signcontroller=require('../controllers/SignUp');
 
 router.post('/SignUp', Signcontroller.AddUser);
 

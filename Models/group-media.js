@@ -1,16 +1,18 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
 
-const UsersMsg = sequelize.define('UsersMsg', {
+const GroupMedia = sequelize.define('GroupMedia', {
   Id: {
     type: Sequelize.UUID,
     primaryKey: true,
     allowNull: false
   },
-  Messages: {
+  
+  MediaName:{
     type: Sequelize.STRING,
-    allowNull: false,
-  },
+    
+   }
+
 
 })
-module.exports = UsersMsg;
+module.exports = GroupMedia;

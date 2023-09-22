@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const Groupcontroller=require('../Controllers/Groups');
-const GroupInvitecontroller=require('../Controllers/Groups');
-const UserAuthen=require('../Middlewares/Autherizations');
+const Groupcontroller=require('../controllers/groups');
+const GroupInvitecontroller=require('../controllers/groups');
+const UserAuthen=require('../middlewares/autherizations');
 
 router.get('/getGroupData', UserAuthen.Authentication,Groupcontroller.getGroupData);
 

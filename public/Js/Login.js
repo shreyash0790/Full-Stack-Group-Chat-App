@@ -31,7 +31,7 @@ async function getFormData(formData) {
             alert('Login successfull')
           
             localStorage.setItem('token', responseData.token);
-            window.location.href = `/Html/Chats.html?username=${responseData.User.Name}`;
+            window.location.href = `/html/chats.html?username=${responseData.User.Name}`;
        
          
             

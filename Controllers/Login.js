@@ -1,4 +1,4 @@
-const Users = require('../Models/SignUp');
+const Users = require('../models/sign-up');
 const bcrypt= require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
@@ -12,11 +12,7 @@ exports.GetUser = async (req, res, next) => {
     try {
         const Email = req.query.Email;
         const Password=req.query.Password;
-    
-
-        console.log('Received Email:', Email);
-        console.log('Received Password:', Password);
-        console.log('hi')
+  
         const existingUser = await Users.findOne({ where: { Email: Email} });
         if (existingUser) {
          bcrypt.compare(Password,existingUser.Password, (err,result)=>{

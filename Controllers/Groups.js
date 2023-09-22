@@ -1,7 +1,7 @@
 const uuid = require('uuid');
-const Users = require('../Models/SignUp');
-const Groups=require('../Models/Groups');
-const GroupMember=require('../Models/GroupMembers');
+const Users = require('../models/sign-up');
+const Groups=require('../models/groups');
+const GroupMember=require('../models/group-members');
 
 
 exports.CreateGroup=async (req, res, next) => {

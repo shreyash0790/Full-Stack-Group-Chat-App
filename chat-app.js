@@ -2,7 +2,7 @@ const path=require('path');
 const fs=require('fs')
 const express = require('express')
 const cors=require('cors')
-const sequelize=require('./Util/Database');
+const sequelize=require('./util/database');
 const app=express();
 
 const io=require('socket.io')(3000,{
@@ -13,24 +13,26 @@ const io=require('socket.io')(3000,{
 
 
 io.on("connection", (socket)=>{
-  socket.on("User-Msg",message=>{
-    io.emit("messages",message)
+  socket.on("User-Msg", (data)=>{
+    io.emit("messages",data)
   })
 })
 
 
 //routes import
-const SignUpRoutes=require('./Routes/SignUp');
-const LoginRoutes=require('./Routes/Login')
-const ChatRoutes=require('./Routes/Chats')
-const GroupsRoutes=require('./Routes/Groups');
-const GroupAdminRoutes=require('./Routes/GroupAdmin');
+const SignUpRoutes=require('./routes/sign-up');
+const LoginRoutes=require('./routes/login')
+const ChatRoutes=require('./routes/chats')
+const GroupsRoutes=require('./routes/groups');
+const GroupAdminRoutes=require('./routes/group-admin');
+
 
 //models import
-const User=require('./Models/SignUp')
-const UserChats=require('./Models/Chats')
-const Groups=require('./Models/Groups')
-const GroupMember=require('./Models/GroupMembers');
+const User=require('./models/sign-up')
+const UserChats=require('./models/chats')
+const Groups=require('./models/groups')
+const GroupMember=require('./models/group-members');
+const GroupMedia=require('./models/group-media')
 
 
 //middlewares
@@ -45,7 +47,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//controllers middlewares
+
 app.use(SignUpRoutes);
 app.use(LoginRoutes);
 app.use(GroupAdminRoutes);
@@ -69,6 +71,11 @@ GroupMember.belongsTo(Groups)
 GroupMember.hasMany(UserChats);
 UserChats.belongsTo(GroupMember);
 
+User.hasMany(GroupMedia);
+GroupMedia.belongsTo(User);
+
+GroupMember.hasMany(GroupMedia);
+GroupMedia.belongsTo(GroupMember);
 
 //server config
 sequelize

@@ -34,8 +34,8 @@
                             <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input
                                     class="form-control search-field" type="search" name="search" id="search-field">
                             </div>
-                        </form><span class="navbar-text"> <a href="Login.html" class="login" id="LogOut">Log Out</a></span><a
-                            class="btn btn-light action-button" id="DisplayUsername"></a>
+                        </form><span class="navbar-text"> <a href="login.html" class="login" id="LogOut">Log
+                                Out</a></span><a class="btn btn-light action-button" id="DisplayUsername"></a>
                     </div>
                 </div>
             </nav>
@@ -50,13 +50,15 @@
                                     </div>
                                     <input type="text" class="form-control" placeholder="Search...">
                                 </div>
-                                <ul class="list-unstyled chat-list mt-2 mb-0" id="groupList" >
+                                <ul class="list-unstyled chat-list mt-2 mb-0" id="groupList">
 
                                     <li class="clearfix" id="group-item">
                                         <img>
                                         <div class="about">
-                                            <div class="name"> <h4 class="m-b-3" style="margin-top: 10px"  ></h4></div>
-                                        
+                                            <div class="name">
+                                                <h4 class="m-b-3" style="margin-top: 10px"></h4>
+                                            </div>
+
                                         </div>
                                     </li>
 
@@ -70,76 +72,89 @@
                                                 <img src="https://plus.unsplash.com/premium_photo-1681487872232-fa622a6dd59e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80"
                                                     alt="avatar">
                                             </a>
-                                            <div class="chat-about" >
+                                            <div class="chat-about">
                                                 <h4 class="m-b-3" style="margin-top: 7px" id="group-name-display"></h4>
-                                        
+
                                             </div>
                                         </div>
                                         <div class="col-lg-6 hidden-sm text-right">
-                                        
-                                            <a href="javascript:void(0);" class="btn btn-outline-primary"><i
-                                                    class="fa fa-image"></i>Add Images</a>
-                                                    <button type="button" class="btn btn-outline-info" id="GroupMem-btn" >
-                                                       Group Members</button>
-                                                       <div class="form-popup" id="GroupMembers-Form">
-                                                        <form  class="form-container">
-                                                          <h4 class="center-text" id="Group"> </h4>
-                                                      
-                                                          <h6 class="left-align-label"><b>Members  </b> </h6>
-                                                         
-                                                          <ul class="list-group" id="G-List" >
 
-                                                            <li class="list-group-item" style="display: flex; align-items: center; padding-top: 1px; padding-bottom: 1px; justify-content: space-between;" id="Invite-item" >
-                                                        <button class="btnadd btnadd-outline-info " id="Remove-btn"></button><br><br>
-                                                        <button class="btnadd btnadd-outline-info " id="Admin-btn"></button>
-                                                            </li>
-                        
-                                                        </ul>
-                                                         
-                                                    
-                                                         
-                                                          <button type="button" class="btn cancel" onclick="closeGroupMemForm()">Confirm Delete</button>
-                                                          <button type="button" class="btn cancel" onclick="closeGroupMemAdminForm()">Confirm Admin</button>
-                                                        </form>
-                                                      </div>
 
-                                            <button type="button" class="btn btn-outline-info" id="Invite-btn" >
-                                                    Invite People</button>
-                                                    <div class="form-popup" id="CreateInv-Form">
-                                                        <form  class="form-container">
-                                                          <h4 class="center-text" id="InviteGroup"> </h4>
-                                                      
-                                                          <h6 class="left-align-label"><b>Users </b> </h6>
-                                                         
-                                                          <ul class="list-group" id="InviteList" >
 
-                                                            <li class="list-group-item" style="display: flex; align-items: center; padding-top: 1px; padding-bottom: 1px; justify-content: space-between;" id="Invite-item" >
-                                                        <button class="btnadd btnadd-outline-info " id="Add-btn"></button>
-                                                            </li>
-                        
-                                                        </ul>
-                                                         
-                                                    
-                                                         
-                                                          <button type="button" class="btn cancel" onclick="closeInviteForm()">Confirm Invite</button>
-                                                        </form>
-                                                      </div>
+                                            <button type="button" class="btn btn-outline-info" id="GroupMem-btn">
+                                                Group Members</button>
+                                            <div class="form-popup" id="GroupMembers-Form">
+                                                <form class="form-container">
+                                                    <h4 class="center-text" id="Group"> </h4>
 
-                                            <a href="javascript:void(0);" class="btn btn-outline-warning" onclick="openGroupForm()">
-                                                  Create Group</a>
+                                                    <h6 class="left-align-label"><b>Members </b> </h6>
 
-                                                    <div class="form-popup" id="CreateG-Form">
-                                                        <form  class="form-container">
-                                                          <h4 class="center-text">Create Your Own Chat Group </h4>
-                                                      
-                                                          <h6 class="left-align-label"><b>Group Name</b> </h6>
-                                                          <input type="text" id="Group-name" placeholder="Enter Group Name "  required>
-                                                      
-                                                    
-                                                         
-                                                          <button type="button" class="btn cancel" onclick="closeGroupForm()">Create Group</button>
-                                                        </form>
-                                                      </div>
+                                                    <ul class="list-group" id="G-List">
+
+                                                        <li class="list-group-item"
+                                                            style="display: flex; align-items: center; padding-top: 1px; padding-bottom: 1px; justify-content: space-between;"
+                                                            id="Invite-item">
+                                                            <button class="btnadd btnadd-outline-info "
+                                                                id="Remove-btn"></button><br><br>
+                                                            <button class="btnadd btnadd-outline-info "
+                                                                id="Admin-btn"></button>
+                                                        </li>
+
+                                                    </ul>
+
+
+
+                                                    <button type="button" class="btn cancel"
+                                                        onclick="closeGroupMemForm()">Confirm Delete</button>
+                                                    <button type="button" class="btn cancel"
+                                                        onclick="closeGroupMemAdminForm()">Confirm Admin</button>
+                                                </form>
+                                            </div>
+
+                                            <button type="button" class="btn btn-outline-info" id="Invite-btn">
+                                                Invite People</button>
+                                            <div class="form-popup" id="CreateInv-Form">
+                                                <form class="form-container">
+                                                    <h4 class="center-text" id="InviteGroup"> </h4>
+
+                                                    <h6 class="left-align-label"><b>Users </b> </h6>
+
+                                                    <ul class="list-group" id="InviteList">
+
+                                                        <li class="list-group-item"
+                                                            style="display: flex; align-items: center; padding-top: 1px; padding-bottom: 1px; justify-content: space-between;"
+                                                            id="Invite-item">
+                                                            <button class="btnadd btnadd-outline-info "
+                                                                id="Add-btn"></button>
+                                                        </li>
+
+                                                    </ul>
+
+
+
+                                                    <button type="button" class="btn cancel"
+                                                        onclick="closeInviteForm()">Confirm Invite</button>
+                                                </form>
+                                            </div>
+
+                                            <a href="javascript:void(0);" class="btn btn-outline-warning"
+                                                onclick="openGroupForm()">
+                                                Create Group</a>
+
+                                            <div class="form-popup" id="CreateG-Form">
+                                                <form class="form-container">
+                                                    <h4 class="center-text">Create Your Own Chat Group </h4>
+
+                                                    <h6 class="left-align-label"><b>Group Name</b> </h6>
+                                                    <input type="text" id="Group-name" placeholder="Enter Group Name "
+                                                        required>
+
+
+
+                                                    <button type="button" class="btn cancel"
+                                                        onclick="closeGroupForm()">Create Group</button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -154,10 +169,14 @@
                                     <div class="input-group mb-0">
                                         <div class="input-group-prepend">
                                            
-                                            <button class="input-group-text" type="submit" id="Send-btn">Send</button>
+                                            <form id="myForm" enctype="multipart/form-data">
+                                                <input type="text" class="form-control" placeholder="Enter text here..."id="Text-input">
+                                                <input type="file" id="Imagefile" />
+                                                <button class="input-group-text" type="submit"id="Send-btn">Send</button>
+
+                                            </form>
+
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Enter text here..."
-                                            id="Text-input">
                                     </div>
                                 </div>
                             </div>
@@ -172,10 +191,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script  src="/Js/Chats.js"></script>
-    <script src="/Js/GroupsInvite.js"></script>
-    <script src="/Js/GroupAdmin.js"></script>
-    <script src="/js/Login.js"></script>
+    <script src="/js/chats.js"></script>
+    <script src="/js/groups-invite.js"></script>
+    <script src="/js/group-admin.js"></script>
+    <script src="/js/login.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 const Sequelize=require('sequelize');
-const sequelize=require('../Util/Database');
+const sequelize=require('../util/database');
 
 const Groups=sequelize.define('Groups',{
     Id:{
