@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const GAdmincontroller=require('../controllers/GroupAdmin');
+const GAdmincontroller=require('../controllers/group-admin');
 const UserAuthen=require('../middlewares/autherizations');
 
 
