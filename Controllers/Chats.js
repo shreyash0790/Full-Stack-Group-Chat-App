@@ -85,7 +85,7 @@ exports.UserMsg = async (req, res, next) => {
         if (user) {
             const GroupMem = await GroupMember.findOne({ where: { UserId: req.users.Id, GroupId: groupId } });
             if (GroupMem) {
-                await UserChat.create({ Id: id, Messages: Messages, UserId: req.users.Id, GroupMemberId: groupId })
+                await UserChat.create({ Id: id, Messages: Messages, UserId: req.users.Id, GroupMemberId: GroupMem.Id})
         }
     }
         res.status(201).json({ Messages: Messages, });

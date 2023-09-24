@@ -156,8 +156,6 @@ async function GetUserImageData() {
         newListItem.className = 'clearfix'
         const newMessage = document.createElement('div');
 
-        newMessage.textContent = ` ${UserMsg.UserName}: ${UserMsg.MessageContent}`;
-
 
         const imageElement = document.createElement('img');
 
