@@ -10,7 +10,11 @@ const GroupMedia = sequelize.define('GroupMedia', {
   
   MediaName:{
     type: Sequelize.STRING,
-    
+    allowNull: false
+   },
+  Caption:{
+    type: Sequelize.STRING,
+    allowNull: false
    }
 
 

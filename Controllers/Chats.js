@@ -3,8 +3,10 @@ const Users = require('../models/sign-up');
 const UserChat = require('../models/chats');
 const GroupMember = require('../models/group-members');
 const GroupMedia=require('../models/group-media')
+const Groups=require('../models/groups')
 
 const { S3Client, PutObjectCommand , GetObjectCommand } = require('@aws-sdk/client-s3');
+const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const { config, S3 } = require('aws-sdk');
 const Sharp = require('sharp')
 
@@ -49,19 +51,19 @@ exports.PostUserMsgImages = async (req, res, next) => {
 
             const id = uuid.v4();
             const groupId = req.params.groupId
-            const user = await Users.findOne({where : { Id:req.users.Id }});
-          
-            if(user){
+            const caption= req.body.captioninput
+           console.log(groupId)
+           console.log(req.users.Id)
                 const GroupMem = await GroupMember.findOne({where : { UserId:req.users.Id ,GroupId:groupId}});
-                console.log(GroupMem)
-                console.log(req.users.Id)
-                console.log(gr)
+ 
+    
                 if(GroupMem){
-               await GroupMedia.create({ Id:id , MediaName:params.Key, UserId: req.users.Id, GroupMemberId: GroupMem.Id})
+               const GroupMedias= await GroupMedia.create({ Id:id , MediaName:params.Key, Caption:caption, UserId: req.users.Id, GroupId: groupId})
+               res.status(201).json({ Image:GroupMedias, });
                 } 
-                }
-                res.status(201).json({ Image:"image saved ", });
-
+                
+                
+ 
 
 
 
@@ -85,7 +87,7 @@ exports.UserMsg = async (req, res, next) => {
         if (user) {
             const GroupMem = await GroupMember.findOne({ where: { UserId: req.users.Id, GroupId: groupId } });
             if (GroupMem) {
-                await UserChat.create({ Id: id, Messages: Messages, UserId: req.users.Id, GroupMemberId: GroupMem.Id })
+                await UserChat.create({ Id: id, Messages: Messages, UserId: req.users.Id, GroupId: groupId })
         }
     }
         res.status(201).json({ Messages: Messages, });
@@ -141,6 +143,34 @@ exports.GetUserMsg = async (req, res, next) => {
 
 
 
+
+exports.GetUserMsgImages=async (req, res, next) => {
+try{
+    const groupId = req.params.groupId
+
+const ImageDataModel=await GroupMedia.findAll({where:{UserId:req.users.Id, GroupId:groupId}})
+
+for(posts of ImageDataModel){
+const getObjectParams={
+    Bucket:process.env.BUCKET_NAME,
+    key:ImageDataModel.MediaName
+}
+
+
+const command = new GetObjectCommand(getObjectParams);
+const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+posts.imageUrl=url
+}
+res.status(200).json({ MessageImage:ImageDataModel });
+
+
+}catch(err){
+    console.log(err)
+        res.status(500).json({ error: 'Internal Server Error' });
+}
+
+
+}
 
 
 

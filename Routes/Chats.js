@@ -10,6 +10,7 @@ router.get('/GetUserMsg/groupChat/:groupId', UserAuthen.Authentication,Chatcontr
 router.post('/UserMsg/groupChat/:groupId',UserAuthen.Authentication, Chatcontroller.UserMsg);
 
 router.post('/UserMsg/groupChat/Images/:groupId',UserAuthen.Authentication, Chatcontroller.PostUserMsgImages)
+router.get('/GetUserMsg/groupChat/Images/:groupId',UserAuthen.Authentication, Chatcontroller.GetUserMsgImages)
 
 
 

@@ -74,8 +74,8 @@ UserChats.belongsTo(GroupMember);
 User.hasMany(GroupMedia);
 GroupMedia.belongsTo(User);
 
-GroupMember.hasMany(GroupMedia);
-GroupMedia.belongsTo(GroupMember);
+Groups.hasMany(GroupMedia);
+GroupMedia.belongsTo(Groups);
 
 //server config
 sequelize

@@ -2,42 +2,45 @@
 const myform = document.getElementById('myForm');
 const UserTextInput = document.getElementById('Text-input');
 const Msglist = document.getElementById('User-msg-list');
-const selectedimgFile=document.getElementById('Imagefile');
+const selectedimgFile = document.getElementById('Imagefile');
 const UserMsgDiv = document.getElementById('User-msg');
 const socket = io('http://localhost:3000');
 
 const CurrUsername = document.getElementById('DisplayUsername');
 
-
-
-myform.addEventListener('submit', async function (e) {
+const sendTextbtn = document.getElementById('Send-text-btn')
+sendTextbtn.addEventListener('click', async function (e) {
     e.preventDefault();
     const Messages = UserTextInput.value;
     const ActiveUser = CurrUsername.textContent;
     if (UserTextInput.value === '') {
         alert("No Messeges Input");
-    } else{
+    } else {
         socket.emit("User-Msg", { Messages, ActiveUser });
         const UserTextData = { Messages: Messages };
-    
-        UserTextInput.value = "";
-        
-        const formdata = new FormData();
-        const selectedFile=selectedimgFile.files[0];
-      
-        formdata.append("Imagefile", selectedFile)
-        formdata.append("Text-input", Messages)
-      
-        const queryParams = new URLSearchParams(window.location.search);
-        const groupId = queryParams.get("groupId");
-
-        const token = localStorage.getItem('token');
-        const response = await axios.post(`http://localhost:4000/UserMsg/groupChat/Images/:${groupId}`, formdata, {headers:{'Content-Type': 'multipart/form-data', "Authorization": token}});
         postUserTextData(UserTextData)
+        UserTextInput.value = "";
     }
-}
+})
 
-);
+myform.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const caption = document.getElementById('captioninput')
+    const Caption = caption.value
+
+    const formdata = new FormData();
+    const selectedFile = selectedimgFile.files[0];
+
+    formdata.append("Imagefile", selectedFile)
+    formdata.append("captioninput", Caption)
+
+    const queryParams = new URLSearchParams(window.location.search);
+    const groupId = queryParams.get("groupId");
+
+    const token = localStorage.getItem('token');
+    const response = await axios.post(`http://localhost:4000/UserMsg/groupChat/Images/${groupId}`, formdata, { headers: { 'Content-Type': 'multipart/form-data', "Authorization": token } });
+
+});
 
 
 
@@ -123,13 +126,57 @@ document.addEventListener('DOMContentLoaded', function () {
 
     getGroupsData();
     adminVerify();
-
+    GetUserImageData();
 
 
 
 
 })
+async function GetUserImageData() {
+    const token = localStorage.getItem('token');
 
+
+    const queryParams = new URLSearchParams(window.location.search);
+    const groupId = queryParams.get("groupId");
+    const response = await axios.get(`http://localhost:4000/GetUserMsg/groupChat/Images/${groupId}`, {
+        headers: {
+            "Authorization": token
+        }
+    });
+    const allUserMsgImage = response.data.MessageImage
+
+
+
+
+    for (const UserMsgsImage of allUserMsgImage) {
+        /// write code to dilsplay image 
+
+
+        const newListItem = document.createElement('li');
+        newListItem.className = 'clearfix'
+        const newMessage = document.createElement('div');
+
+        newMessage.textContent = ` ${UserMsg.UserName}: ${UserMsg.MessageContent}`;
+
+
+        const imageElement = document.createElement('img');
+
+        imageElement.src = UserMsgsImage.imageUrl;
+
+
+
+        newMessage.className = "message my-message"
+        newMessage.id = 'User-msg';
+        newMessage.style.display = 'inline-block'
+
+        newMessage.appendChild(imageElement);
+        newListItem.appendChild(newMessage);
+        Msglist.appendChild(newListItem);
+    }
+
+
+
+}
 
 // <...   getting chat data.....//
 const MsgLimit = 50;

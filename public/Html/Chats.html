@@ -27,7 +27,7 @@
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav">
                             <li class="nav-item" role="presentation"><a class="nav-link active"
-                                    href="SignUp.html">Home</a></li>
+                                    href="sign-up.html">Home</a></li>
 
                         </ul>
                         <form class="form-inline mr-auto" target="_self">
@@ -168,12 +168,20 @@
                                 <div class="chat-message clearfix">
                                     <div class="input-group mb-0">
                                         <div class="input-group-prepend">
-                                           
-                                            <form id="myForm" enctype="multipart/form-data">
-                                                <input type="text" class="form-control" placeholder="Enter text here..."id="Text-input">
-                                                <input type="file" id="Imagefile" />
-                                                <button class="input-group-text" type="submit"id="Send-btn">Send</button>
+                                            <button class="input-group-text" type="submit"
+                                                id="Send-text-btn">Send</button>
+                                            <input type="text" class="form-control" placeholder="Enter text here..."
+                                                id="Text-input">
 
+
+                                            <form id="myForm" enctype="multipart/form-data"
+                                                style="display: flex; align-items: center;">
+                                                <input type="text" class="form-control"
+                                                    placeholder="Enter Caption here..." id="captioninput"
+                                                    style="display: flex;">
+                                                <input type="file" id="Imagefile" style="margin-left: 10px;">
+                                                <button class="input-group-text" type="submit" 
+                                                    style="margin-left: 10px;">Send Image</button>
                                             </form>
 
                                         </div>
