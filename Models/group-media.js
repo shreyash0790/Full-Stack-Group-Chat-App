@@ -15,6 +15,9 @@ const GroupMedia = sequelize.define('GroupMedia', {
   Caption:{
     type: Sequelize.STRING,
     allowNull: false
+   },
+   imageUrl:{
+    type: Sequelize.STRING
    }
 
 

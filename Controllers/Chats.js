@@ -52,8 +52,6 @@ exports.PostUserMsgImages = async (req, res, next) => {
             const id = uuid.v4();
             const groupId = req.params.groupId
             const caption= req.body.captioninput
-           console.log(groupId)
-           console.log(req.users.Id)
                 const GroupMem = await GroupMember.findOne({where : { UserId:req.users.Id ,GroupId:groupId}});
  
     
@@ -87,7 +85,7 @@ exports.UserMsg = async (req, res, next) => {
         if (user) {
             const GroupMem = await GroupMember.findOne({ where: { UserId: req.users.Id, GroupId: groupId } });
             if (GroupMem) {
-                await UserChat.create({ Id: id, Messages: Messages, UserId: req.users.Id, GroupId: groupId })
+                await UserChat.create({ Id: id, Messages: Messages, UserId: req.users.Id, GroupMemberId: groupId })
         }
     }
         res.status(201).json({ Messages: Messages, });
@@ -150,16 +148,21 @@ try{
 
 const ImageDataModel=await GroupMedia.findAll({where:{UserId:req.users.Id, GroupId:groupId}})
 
+
 for(posts of ImageDataModel){
+
 const getObjectParams={
     Bucket:process.env.BUCKET_NAME,
-    key:ImageDataModel.MediaName
+    Key:posts.MediaName
 }
 
 
 const command = new GetObjectCommand(getObjectParams);
 const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
 posts.imageUrl=url
+
+
+
 }
 res.status(200).json({ MessageImage:ImageDataModel });
 
