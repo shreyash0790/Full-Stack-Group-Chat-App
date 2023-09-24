@@ -19,7 +19,7 @@ myform.addEventListener('submit', async function (e) {
     } else{
         socket.emit("User-Msg", { Messages, ActiveUser });
         const UserTextData = { Messages: Messages };
-        postUserTextData(UserTextData)
+    
         UserTextInput.value = "";
         
         const formdata = new FormData();
@@ -33,7 +33,7 @@ myform.addEventListener('submit', async function (e) {
 
         const token = localStorage.getItem('token');
         const response = await axios.post(`http://localhost:4000/UserMsg/groupChat/Images/:${groupId}`, formdata, {headers:{'Content-Type': 'multipart/form-data', "Authorization": token}});
-
+        postUserTextData(UserTextData)
     }
 }
 
